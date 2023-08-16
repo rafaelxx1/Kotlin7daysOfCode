@@ -4,57 +4,27 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.toComposeImageBitmap
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
+import card.myCard
+import extend.getImgBitmap
+import java.awt.image.BufferedImage
+import java.net.HttpURLConnection
+import java.net.URL
+import javax.imageio.ImageIO
 
 @Composable
 @Preview
 fun App() {
-    var text by remember { mutableStateOf("Hello, World!") }
-    val firstMovie = Movie(title = "Harry Potter", img = "/file", score = 10, year = 2002)
-    val path =  "hp.png"
-
-
-    @Composable
-    fun myCard(modifier: Modifier = Modifier, file: String, title: String, score: Int, year: Int, content: @Composable () -> Unit) {
-        Card(
-            modifier = modifier
-                .size(width = 300.dp, height = 200.dp)
-                .padding(15.dp),
-            elevation = 4.dp
-        ) {
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            ) {
-                Text(title)
-                Image(
-                    painter = painterResource(file),
-                    contentDescription = "random",
-                    modifier = Modifier.size(width = 100.dp, height = 100.dp)
-                )
-                Text("Score: $score - Year: $year")
-                content()
-            }
-
-        }
-    }
+    val path ="https://sm.ign.com/ign_br/cover/h/harry-pott/harry-potter-the-series_s6p5.jpg"
 
     MaterialTheme {
-        myCard(file = path, title = "Harry Potter", score = 10, year = 2002){}
-
-
+        Column {
+            myCard(file = path, title = "Harry Potter", score = 10, year = 2002) {}
+        }
     }
-
-
 }
 
 fun main() = application {
@@ -62,6 +32,8 @@ fun main() = application {
         App()
     }
 }
+
+
 
 
 data class Movie(
