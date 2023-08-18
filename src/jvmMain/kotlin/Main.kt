@@ -2,6 +2,8 @@
 import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -12,6 +14,7 @@ import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import card.myCard
 import extend.getImgBitmap
+import model.Movie
 import java.awt.image.BufferedImage
 import java.net.HttpURLConnection
 import java.net.URL
@@ -20,13 +23,11 @@ import javax.imageio.ImageIO
 @Composable
 @Preview
 fun App() {
-
-
     MaterialTheme(
         colors = darkColors()
     ) {
-        Row {
-            movielist.forEach { movie ->
+        LazyColumn {
+            items(items = movielist) { movie ->
                 myCard(file = movie.url, title = movie.title, score = movie.score, year = movie.year) {}
             }
         }
@@ -56,11 +57,4 @@ val movie5 = Movie("World War Z", url5, 10, 2013)
 val movielist: List<Movie> = listOf(movie1, movie2, movie3, movie4, movie5)
 
 
-data class Movie(
-    val title: String,
-    val url: String,
-    val score: Int,
-    val year: Int
-) {
 
-}
