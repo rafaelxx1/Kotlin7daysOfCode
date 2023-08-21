@@ -27,6 +27,8 @@ kotlin {
         val jvmMain by getting {
             dependencies {
                 implementation(compose.desktop.currentOs)
+                implementation("com.squareup.okhttp3:okhttp:4.9.1")
+
             }
         }
         val jvmTest by getting

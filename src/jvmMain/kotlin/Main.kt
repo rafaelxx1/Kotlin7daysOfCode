@@ -13,6 +13,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import card.myCard
+import connection.api.httpConnectionApi
 import extend.getImgBitmap
 import model.Movie
 import java.awt.image.BufferedImage
@@ -55,6 +56,9 @@ val movie3 = Movie("Zombieland", url3, 10, 2010)
 val movie4 = Movie("Lord of the Rings", url4, 10, 2001)
 val movie5 = Movie("World War Z", url5, 10, 2013)
 val movielist: List<Movie> = listOf(movie1, movie2, movie3, movie4, movie5)
+
+
+
 
 
 
