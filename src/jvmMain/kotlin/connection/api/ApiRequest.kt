@@ -1,7 +1,18 @@
 package connection.api
 
+import com.google.gson.Gson
+import model.Adress
 import okhttp3.*
 
+
+fun main(){
+
+    val http = "https://viacep.com.br/ws/13052634/json/"
+    val json = getJsonObj(httpConnectionApi(http))
+
+    println(json?.toString())
+
+}
 fun httpConnectionApi(urlApi: String): String? {
     val client = OkHttpClient()
 
@@ -19,4 +30,9 @@ fun httpConnectionApi(urlApi: String): String? {
         println("error response: ${response.code}")
         return null
     }
+}
+
+fun getJsonObj(json: String?): Adress? {
+    val gson = Gson()
+    return gson.fromJson(json, Adress::class.java)
 }
